@@ -31,11 +31,10 @@ cosine_values = np.cos(x_values)
 sinsin_values = np.sin(sine_values)
 coscos_values = np.cos(cosine_values)
 
-# print(sine_values)
-# print(cosine_values)
-# print(sinsin_values)
-# print(coscos_values)
-# TODO: Remove comment before turning in.
+print(sine_values)
+print(cosine_values)
+print(sinsin_values)
+print(coscos_values)
 
 '''
 Alright, all of the values are bound within the [0,1][0,1] bounds. Now I need to get all of these values into a tall
@@ -43,8 +42,7 @@ array.
 '''
 
 tall_array = np.column_stack((x_values, sine_values, cosine_values, sinsin_values, coscos_values))
-# print(tall_array)
-# TODO: Remove comment before turning in.
+print(tall_array)
 
 '''
 Oh, wait, I went the wrong direction with this. This gives the rows as the different x-values. I need the rows to be the
@@ -52,8 +50,7 @@ different functions and the columns the different x-values.
 '''
 
 correct_tall_array = np.row_stack((x_values, sine_values, cosine_values, sinsin_values, coscos_values))
-# print(correct_tall_array)
-# TODO: Remove comment before turning in.
+print(correct_tall_array)
 
 '''
 Hmmm, that's not really much of a tall array, but that answers this portion of the exercise.
@@ -68,18 +65,16 @@ Alright, first thing first is to create the needed array using np.random.rand(3,
 '''
 
 random_array = np.random.rand(3, 35, 5)
-# print(random_array)
-# TODO: Remove the comment before turning in.
+print(random_array)
 
 '''
 This creates 3 arrays with 35 rows and 5 columns each. Now to get the sum of all of the entries, the sum of the rows,
 and the sum of the columns.
 '''
 
-# print('The sum of all the entries is: ', np.sum(random_array))
-# print('The sum of the rows are: ', np.sum(random_array, axis=0))
-# print('The sum of the columns are: ', np.sum(random_array, axis=1))
-# TODO: Remove the comment before turning in.
+print('The sum of all the entries is: ', np.sum(random_array))
+print('The sum of the rows are: ', np.sum(random_array, axis=0))
+print('The sum of the columns are: ', np.sum(random_array, axis=1))
 
 '''
 Alright, I now have the needed sums for Part 2. That concludes this section of the assignment.
@@ -93,8 +88,35 @@ Hmmmm, well, first thing first is to create the array. Let's start with that.
 '''
 
 to_sort = np.random.rand(5, 55, 5)
+to_sort = np.round(to_sort, 2)
 print(to_sort)
 
 '''
-Ok, I have the arrays. I now need to sort them. Let's start by looking at the argsort() function.
+Ok, I have the arrays. I now need to sort them. Let's start by looking at the argsort() function. This probably isn't
+the most elegant way of doing this, but this works to sort the array, but doesn't save it back into the array.
 '''
+
+for i in range(5):
+    sort = to_sort[i]
+    sort = sort[np.argsort(sort[:, 1])]
+    print(sort)
+
+'''
+So how to sort the array and save the results? Why not make a list, store each sorted array in the list, and then use
+sorted arrays to make a new array?
+'''
+
+sort0 = []
+sort1 = []
+sort2 = []
+sort3 = []
+sort4 = []
+sorted_list = [sort0, sort1, sort2, sort3, sort4]
+
+for i in range(5):
+    sort = to_sort[i]
+    sort = sort[np.argsort(sort[:, 1])]
+    sorted_list[i] = sort
+
+sorted_array = np.array(sorted_list)
+print(sorted_array)
