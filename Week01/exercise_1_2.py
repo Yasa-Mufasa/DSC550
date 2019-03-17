@@ -18,7 +18,8 @@ second column. Try combining tarray slicing + argsort + indexing to do this.
 '''
 
 '''
-Part 1:
+Part 1: Evaluate coscos and sinsin on the interval [0,1][0,1] and then stack the results into a tall array with rows
+being the (cos(x), sin(x)) (cos(f)(x), sin(f)(x)) entries.
 
 Seeing as sine and cosine are already bound on the y-axis to [0,1] so I don't need to worry about that. Then I just need
 to generate the x-values for the interval [0,1]. How many points should I look at? Let's start with 20 points.
@@ -51,8 +52,49 @@ different functions and the columns the different x-values.
 '''
 
 correct_tall_array = np.row_stack((x_values, sine_values, cosine_values, sinsin_values, coscos_values))
-print(correct_tall_array)
+# print(correct_tall_array)
+# TODO: Remove comment before turning in.
 
 '''
 Hmmm, that's not really much of a tall array, but that answers this portion of the exercise.
+'''
+
+'''
+Part 2:Create a random 3x53x5 array using the np.random.rand(3,5) function and compute: the sum of all the entries, the
+sum of the rows and the sum of the columns. (Just like sorted had an optional key=arguement, many Numpy functions have
+an optional axis=argument!)
+
+Alright, first thing first is to create the needed array using np.random.rand(3,5)
+'''
+
+random_array = np.random.rand(3, 35, 5)
+# print(random_array)
+# TODO: Remove the comment before turning in.
+
+'''
+This creates 3 arrays with 35 rows and 5 columns each. Now to get the sum of all of the entries, the sum of the rows,
+and the sum of the columns.
+'''
+
+# print('The sum of all the entries is: ', np.sum(random_array))
+# print('The sum of the rows are: ', np.sum(random_array, axis=0))
+# print('The sum of the columns are: ', np.sum(random_array, axis=1))
+# TODO: Remove the comment before turning in.
+
+'''
+Alright, I now have the needed sums for Part 2. That concludes this section of the assignment.
+'''
+
+'''
+Part 3: Create a random 5x55x5 array using the function np.random.rand(5,5). We want to sort the rows according to the
+second column. Try combining array slicing + argsort + indexing to do this.
+
+Hmmmm, well, first thing first is to create the array. Let's start with that.
+'''
+
+to_sort = np.random.rand(5, 55, 5)
+print(to_sort)
+
+'''
+Ok, I have the arrays. I now need to sort them. Let's start by looking at the argsort() function.
 '''
